@@ -3,6 +3,7 @@ import AppHeader from "../components/AppHeader";
 import Navbar from "../components/AppNavbar";
 import { useState } from "react";
 import { useColorTheme } from "../theme/ColorThemeProvider";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const { colorTheme } = useColorTheme();
@@ -15,9 +16,9 @@ const Home = () => {
       navbarOffsetBreakpoint='sm'
       header={<AppHeader isOpen={isOpen} toggleNavbar={toggleNavbar} />}
       navbar={<Navbar isOpen={isOpen} />}
-      bg={colorTheme === "dark" ? "dark.6" : "gray.2"}
+      bg={colorTheme === "dark" ? "dark.6" : "gray.1"}
     >
-      body
+      <Outlet />
     </AppShell>
   );
 };
