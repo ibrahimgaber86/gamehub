@@ -1,24 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import gameService from "../services/gameService";
 
-const fetchGames = async () => {
-  return await gameService.getAll().then((res) => res.data.results);
+const fetchGames = async (signal?: AbortSignal) => {
+  return await gameService.getAll({ signal }).then((res) => res.data.results);
 };
 
-const fetchOneGame = async () => {
-  return await gameService.getOne(3328).then((res) => res.data);
+const fetchOneGame = async (id: number, signal?: AbortSignal) => {
+  return await gameService.getOne(id, { signal }).then((res) => res.data);
 };
 
 const useGames = () =>
   useQuery({
     queryKey: ["games"],
-    queryFn: fetchGames,
+    queryFn: ({ signal }) => fetchGames(signal),
   });
 
 export const useGame = (id: number) =>
   useQuery({
     queryKey: ["games", id],
-    queryFn: fetchOneGame,
+    queryFn: ({ signal }) => fetchOneGame(id, signal),
   });
 
 export default useGames;
