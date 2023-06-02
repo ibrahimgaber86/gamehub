@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import gameService from "../services/gameService";
+import gameService, { Game } from "../services/gameService";
+import { AxiosError } from "axios";
 
 const fetchGames = async (signal?: AbortSignal) => {
   return await gameService.getAll({ signal }).then((res) => res.data.results);
@@ -10,7 +11,7 @@ const fetchOneGame = async (id: number, signal?: AbortSignal) => {
 };
 
 const useGames = () =>
-  useQuery({
+  useQuery<Game[], AxiosError>({
     queryKey: ["games"],
     queryFn: ({ signal }) => fetchGames(signal),
   });
