@@ -7,10 +7,10 @@ const ErrorElement = () => {
   if (isRouteErrorResponse(err))
     return (
       <Stack mih={"100vh"} justify='center'>
-        <Title ta={"center"} fz={"calc(2rem + 10vw)"} order={1}>
+        <Title ta={"center"} order={1} size={"3rem"}>
           404
         </Title>
-        <Text component='p' ta={"center"} fz={"calc(1rem + 10vw)"}>
+        <Text component='p' ta={"center"} size={"2rem"}>
           page not found
         </Text>
       </Stack>
