@@ -11,6 +11,7 @@ const ThemeSwitch = () => {
       offLabel={<Sun color='gold' size='2em' />}
       checked={colorTheme === "dark"}
       onChange={toggleTheme}
+      ml='auto'
       size='md'
     />
   );

@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 import PlatformList from "./PlatformList";
 import { Link } from "react-router-dom";
+import getCroppedImageUrl from "../services/imageService";
 
 export const GameCardTemplate = ({
   children,
@@ -37,7 +38,6 @@ type GameCardProps = {
 
 const GameCard = ({ game }: GameCardProps) => {
   const theme = useMantineTheme();
-  console.log(game);
 
   return (
     <GameCardTemplate>
@@ -55,7 +55,12 @@ const GameCard = ({ game }: GameCardProps) => {
             },
           }}
         >
-          <Image src={game.background_image} height={160} alt={game.name} />
+          <Image
+            placeholder={"../assets/no-image-placeholder.webp"}
+            src={getCroppedImageUrl(game.background_image)}
+            height={160}
+            alt={game.name}
+          />
           <Title
             size={"md"}
             order={1}
@@ -88,7 +93,7 @@ const GameCard = ({ game }: GameCardProps) => {
           {game.metacritic}
         </Badge>
       </Group>
-      <PlatformList platforms={game.platforms.map((p) => p.platform)} />
+      <PlatformList platforms={game.platforms?.map((p) => p.platform)} />
     </GameCardTemplate>
   );
 };

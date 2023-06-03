@@ -6,7 +6,7 @@ const GamesSkeleton = () => {
   return (
     <GameGrid>
       {new Array(8).fill(1).map((_, idx) => (
-        <GameGridCol>
+        <GameGridCol key={idx}>
           <GameCardTemplate>
             <Skeleton height={160}></Skeleton>
             <Skeleton height={20} mt={10} mr={"auto"} width={"30%"}></Skeleton>
