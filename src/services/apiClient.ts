@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-type FetchResponse<T> = {
+export type FetchResponse<T> = {
   count: number;
   next: string;
   previous: string;
