@@ -58,6 +58,7 @@ const GameCard = ({ game }: GameCardProps) => {
             placeholder={"../assets/no-image-placeholder.webp"}
             src={getCroppedImageUrl(game.background_image)}
             height={160}
+            imageProps={{ loading: "lazy" }}
             alt={game.name}
           />
           <Title

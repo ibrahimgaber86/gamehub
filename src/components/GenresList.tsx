@@ -3,6 +3,7 @@ import { useGenres } from "../hooks/useGenres";
 import useQueryStore from "../stores/queryStore";
 import GenresSkeleton from "./GenresSkeleton";
 import { shallow } from "zustand/shallow";
+import getCroppedImageUrl from "../services/imageService";
 
 const GenresList = ({ closeNavbar }: { closeNavbar: () => void }) => {
   const { data: genres, isLoading, isError, error } = useGenres();
@@ -37,7 +38,12 @@ const GenresList = ({ closeNavbar }: { closeNavbar: () => void }) => {
             }}
             label={
               <Group>
-                <Avatar src={genre.image_background} alt={genre.name} />
+                <Avatar
+                  radius={"xl"}
+                  imageProps={{ loading: "lazy" }}
+                  src={getCroppedImageUrl(genre.image_background)}
+                  alt={genre.name}
+                />
                 <Text size={"md"}>{genre.name}</Text>
               </Group>
             }
