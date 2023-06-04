@@ -28,7 +28,7 @@ const GamePage = () => {
     isLoading: screenShotsLoading,
   } = useGameScreenShots(parseInt(id));
 
-  const { data: trailers } = useGameTrailers(parseInt(id));
+  const { data: trailers = [] } = useGameTrailers(parseInt(id));
 
   console.log(trailers?.[0].data["480"]);
 
@@ -70,15 +70,17 @@ const GamePage = () => {
           ))}
         </Grid>
       </Grid.Col>
-      <Grid.Col span={12}>
-        <Text>Game Trailer</Text>
-        <video
-          src={trailers?.[0].data["480"]}
-          controls
-          poster={trailers?.[0].preview}
-          width={"100%"}
-        />
-      </Grid.Col>
+      {trailers?.[0]?.data && (
+        <Grid.Col span={12}>
+          <Text>Game Trailer</Text>
+          <video
+            src={trailers?.[0].data["480"]}
+            controls
+            poster={trailers?.[0].preview}
+            width={"100%"}
+          />
+        </Grid.Col>
+      )}
     </Grid>
   );
 };

@@ -3,7 +3,7 @@ import AppHeader from "../components/AppHeader";
 import Navbar from "../components/AppNavbar";
 import { useState } from "react";
 import { useColorTheme } from "../theme/ColorThemeProvider";
-import { Outlet, useLocation, useRoutes } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const Home = () => {
   const { colorTheme } = useColorTheme();
