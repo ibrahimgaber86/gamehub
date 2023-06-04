@@ -1,4 +1,3 @@
-import { Platform } from "./../services/gameService";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { FetchResponse } from "../services/apiClient";
@@ -9,7 +8,6 @@ const fetchGames = async (
   options = {},
   signal?: AbortSignal
 ) => {
-  console.log(options);
   return await gameService
     .getAll({ signal, params: { ...options, page: pageParam } })
     .then((res) => res.data);
@@ -17,6 +15,34 @@ const fetchGames = async (
 
 const fetchOneGame = async (id: number, signal?: AbortSignal) => {
   return await gameService.getOne(id, { signal }).then((res) => res.data);
+};
+
+const fetchGameScreenShot = async (
+  id: number,
+  nestedRoute: string,
+  signal?: AbortSignal
+) => {
+  return await gameService
+    .getOneNestedRoute<{ id: number; image: string }>(id, nestedRoute, {
+      signal,
+    })
+    .then((res) => res.data.results);
+};
+
+const fetchGameTrailers = async (
+  id: number,
+  nestedRoute: string,
+  signal?: AbortSignal
+) => {
+  return await gameService
+    .getOneNestedRoute<{ id: number; preview: string; data: any }>(
+      id,
+      nestedRoute,
+      {
+        signal,
+      }
+    )
+    .then((res) => res.data.results);
 };
 
 type useGamesOptions = {
@@ -40,4 +66,19 @@ export const useGame = (id: number) =>
     queryFn: ({ signal }) => fetchOneGame(id, signal),
   });
 
+export const useGameScreenShots = (id: number) => {
+  const endpoint = "screenshots";
+  return useQuery({
+    queryKey: ["games", id, endpoint],
+    queryFn: ({ signal }) => fetchGameScreenShot(id, endpoint, signal),
+  });
+};
+
+export const useGameTrailers = (id: number) => {
+  const endPoint = "movies";
+  return useQuery({
+    queryKey: ["games", id, endPoint],
+    queryFn: ({ signal }) => fetchGameTrailers(id, endPoint, signal),
+  });
+};
 export default useGames;
