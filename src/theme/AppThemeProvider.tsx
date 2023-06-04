@@ -5,7 +5,7 @@ import AppColorThemeProvider from "./ColorThemeProvider";
 import theme from "./theme";
 
 const AppThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [colorTheme] = useLocalStorage<ColorScheme>({
+  const [colorTheme = "dark"] = useLocalStorage<ColorScheme>({
     key: "color-theme",
   });
 
