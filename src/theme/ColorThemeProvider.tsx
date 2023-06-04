@@ -16,6 +16,7 @@ const AppColorThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [colorTheme, setColorTheme] = useLocalStorage<ColorScheme>({
     key: "color-theme",
     defaultValue: "dark",
+    getInitialValueInEffect: true,
   });
 
   const toggleTheme = useCallback(() => {
