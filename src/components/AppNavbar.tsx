@@ -3,8 +3,9 @@ import GenresList from "./GenresList";
 
 type AppNavbarProps = {
   isOpen: boolean;
+  closeNavbar: () => void;
 };
-const AppNavbar = ({ isOpen }: AppNavbarProps) => {
+const AppNavbar = ({ isOpen, closeNavbar }: AppNavbarProps) => {
   return (
     <Navbar
       p='md'
@@ -12,7 +13,7 @@ const AppNavbar = ({ isOpen }: AppNavbarProps) => {
       hidden={!isOpen}
       width={{ sm: 200, lg: 300 }}
     >
-      <GenresList />
+      <GenresList closeNavbar={closeNavbar} />
     </Navbar>
   );
 };

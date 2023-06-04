@@ -4,13 +4,11 @@ import Navbar from "../components/AppNavbar";
 import { useState } from "react";
 import { useColorTheme } from "../theme/ColorThemeProvider";
 import { Outlet, useLocation } from "react-router-dom";
+import { useDisclosure } from "@mantine/hooks";
 
 const Home = () => {
   const { colorTheme } = useColorTheme();
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleNavbar = () => {
-    setIsOpen((prev) => !prev);
-  };
+  const [isOpen, { close, toggle: toggleNavbar }] = useDisclosure(false);
   const { pathname } = useLocation();
 
   return (
@@ -18,7 +16,9 @@ const Home = () => {
       navbarOffsetBreakpoint='sm'
       header={<AppHeader isOpen={isOpen} toggleNavbar={toggleNavbar} />}
       navbar={
-        pathname.startsWith("/games") ? undefined : <Navbar isOpen={isOpen} />
+        pathname.startsWith("/games") ? undefined : (
+          <Navbar closeNavbar={close} isOpen={isOpen} />
+        )
       }
       bg={colorTheme === "dark" ? "dark.6" : "gray.1"}
     >

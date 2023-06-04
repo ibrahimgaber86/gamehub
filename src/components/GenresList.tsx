@@ -4,7 +4,7 @@ import useQueryStore from "../stores/queryStore";
 import GenresSkeleton from "./GenresSkeleton";
 import { shallow } from "zustand/shallow";
 
-const GenresList = () => {
+const GenresList = ({ closeNavbar }: { closeNavbar: () => void }) => {
   const { data: genres, isLoading, isError, error } = useGenres();
 
   const { genreFilter, setGenre } = useQueryStore(
@@ -25,7 +25,12 @@ const GenresList = () => {
           <NavLink
             key={genre.id}
             active={genre.id.toString() === genreFilter}
-            onClick={() => setGenre(genre.id.toString())}
+            onClick={() => {
+              setGenre(genre.id.toString());
+              console.log(closeNavbar);
+
+              closeNavbar();
+            }}
             label={
               <Group>
                 <Avatar src={genre.image_background} alt={genre.name} />
