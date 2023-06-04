@@ -19,7 +19,13 @@ const GenresList = ({ closeNavbar }: { closeNavbar: () => void }) => {
 
   return (
     <ScrollArea>
-      <NavLink label={"All Genres"} onClick={() => setGenre(undefined)} />
+      <NavLink
+        label={"All Genres"}
+        onClick={() => {
+          setGenre(undefined);
+          closeNavbar();
+        }}
+      />
       {genres.map((genre) => {
         return (
           <NavLink
@@ -27,8 +33,6 @@ const GenresList = ({ closeNavbar }: { closeNavbar: () => void }) => {
             active={genre.id.toString() === genreFilter}
             onClick={() => {
               setGenre(genre.id.toString());
-              console.log(closeNavbar);
-
               closeNavbar();
             }}
             label={
