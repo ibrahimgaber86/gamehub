@@ -4,7 +4,6 @@ import {
   Card,
   Group,
   Badge,
-  Skeleton,
   Text,
   Image,
   Title,
@@ -41,7 +40,7 @@ const GameCard = ({ game }: GameCardProps) => {
 
   return (
     <GameCardTemplate>
-      <Link to={`/games:${game.id}`}>
+      <Link to={`/games/${game.id}`}>
         <Card.Section
           sx={{
             position: "relative",
