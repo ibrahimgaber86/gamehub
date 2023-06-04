@@ -45,7 +45,6 @@ const GameList = () => {
     isLoading,
     error,
   } = useGames({ platforms: platformId, genres: genreId, search });
-  console.log(platformId);
 
   if (isLoading) return <GamesSkeleton />;
 

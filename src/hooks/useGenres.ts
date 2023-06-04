@@ -10,4 +10,5 @@ export const useGenres = () =>
   useQuery<Genre[], AxiosError>({
     queryKey: ["genres"],
     queryFn: ({ signal }) => fetchGenres(signal),
+    staleTime: 1000 * 60 * 60,
   });

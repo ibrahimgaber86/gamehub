@@ -1,8 +1,8 @@
-import { Burger, Flex, Group, Header, MediaQuery } from "@mantine/core";
+import { Burger, Group, Header, MediaQuery } from "@mantine/core";
 
 import Logo from "./Logo";
-import ThemeSwitch from "./ThemeSwitch";
 import SearchInput from "./SearchInput";
+import ThemeSwitch from "./ThemeSwitch";
 
 type AppHeaderProps = {
   isOpen: boolean;

@@ -1,6 +1,6 @@
 import { ActionIcon, TextInput, useMantineTheme } from "@mantine/core";
-import React, { useRef, useState } from "react";
-import { FaSearch, FaArrowRight } from "react-icons/fa";
+import { useRef } from "react";
+import { FaArrowRight, FaSearch } from "react-icons/fa";
 import useQueryStore from "../stores/queryStore";
 
 const SearchInput = () => {
