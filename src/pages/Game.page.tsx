@@ -17,6 +17,7 @@ import {
   useGameScreenShots,
   useGameTrailers,
 } from "../hooks/useGames";
+import getCroppedImageUrl from "../services/imageService";
 
 const GamePage = () => {
   const { id = "-1" } = useParams();
@@ -63,7 +64,10 @@ const GamePage = () => {
         <Grid>
           {screenShots?.map((img) => (
             <Grid.Col sm={12} md={6} key={img.id}>
-              <Image src={img.image} />
+              <Image
+                src={getCroppedImageUrl(img.image)}
+                imageProps={{ loading: "lazy" }}
+              />
             </Grid.Col>
           ))}
         </Grid>
