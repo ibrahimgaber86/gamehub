@@ -18,7 +18,7 @@ const AppHeader = ({ isOpen, toggleNavbar }: AppHeaderProps) => {
       p={{ base: "sm", sm: "md" }}
     >
       <Group noWrap align='center' h={"100%"}>
-        {pathname.startsWith("/games") && (
+        {!pathname.startsWith("/games") && (
           <MediaQuery largerThan='sm' styles={{ display: "none" }}>
             <Burger opened={isOpen} onClick={toggleNavbar} />
           </MediaQuery>
