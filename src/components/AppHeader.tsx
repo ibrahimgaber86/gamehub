@@ -3,12 +3,14 @@ import { Burger, Group, Header, MediaQuery } from "@mantine/core";
 import Logo from "./Logo";
 import SearchInput from "./SearchInput";
 import ThemeSwitch from "./ThemeSwitch";
+import { useLocation } from "react-router-dom";
 
 type AppHeaderProps = {
   isOpen: boolean;
   toggleNavbar: () => void;
 };
 const AppHeader = ({ isOpen, toggleNavbar }: AppHeaderProps) => {
+  const { pathname } = useLocation();
   return (
     <Header
       withBorder
@@ -16,9 +18,11 @@ const AppHeader = ({ isOpen, toggleNavbar }: AppHeaderProps) => {
       p={{ base: "sm", sm: "md" }}
     >
       <Group noWrap align='center' h={"100%"}>
-        <MediaQuery largerThan='sm' styles={{ display: "none" }}>
-          <Burger opened={isOpen} onClick={toggleNavbar} />
-        </MediaQuery>
+        {pathname.startsWith("/games") && (
+          <MediaQuery largerThan='sm' styles={{ display: "none" }}>
+            <Burger opened={isOpen} onClick={toggleNavbar} />
+          </MediaQuery>
+        )}
         <Logo />
         <SearchInput />
         <ThemeSwitch />
