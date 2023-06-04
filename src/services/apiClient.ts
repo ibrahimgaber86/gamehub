@@ -28,6 +28,17 @@ class APIClient<T> {
   getOne = (id: number, config?: AxiosRequestConfig) => {
     return axiosInstance.get<T>(this.endpoint + "/" + id, config);
   };
+
+  getOneNestedRoute = <DerivedEntity>(
+    id: number,
+    nestedRoute: string,
+    config?: AxiosRequestConfig
+  ) => {
+    return axiosInstance.get<FetchResponse<DerivedEntity>>(
+      this.endpoint + "/" + id + "/" + nestedRoute,
+      config
+    );
+  };
 }
 
 export default APIClient;
