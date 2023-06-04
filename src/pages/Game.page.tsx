@@ -30,8 +30,6 @@ const GamePage = () => {
 
   const { data: trailers = [] } = useGameTrailers(parseInt(id));
 
-  console.log(trailers?.[0].data["480"]);
-
   if (isError) return <Text>{(screenShotsError as AxiosError).message}</Text>;
   if (screenShotsLoading)
     return (
