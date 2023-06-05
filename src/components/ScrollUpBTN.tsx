@@ -1,6 +1,6 @@
-import { ActionIcon } from "@mantine/core";
 import { FaArrowUp as Up } from "react-icons/fa";
-import React from "react";
+
+import { ActionIcon } from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
 
 const ScrollUpBTN = () => {
