@@ -7,10 +7,12 @@ import GamesSkeleton from "./GameSkeleton";
 import SelectPlatform from "./SelectPlatform";
 import useQueryStore from "../stores/queryStore";
 import { Fragment } from "react";
+import ScrollUpBTN from "./ScrollUpBTN";
 
 export const GameGrid = ({ children }: { children: React.ReactNode }) => (
   <Grid gutter={5} gutterXs='md' gutterMd='xl' gutterXl={50} m='auto'>
     {children}
+    <ScrollUpBTN />
   </Grid>
 );
 

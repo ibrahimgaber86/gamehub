@@ -6,12 +6,18 @@ import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
   const theme = useMantineTheme();
-  const setSearch = useQueryStore((s) => s.setSearch);
+  const { setSearch, setGenre, setPlatform } = useQueryStore((s) => ({
+    setSearch: s.setSearch,
+    setGenre: s.setGenre,
+    setPlatform: s.setPlatform,
+  }));
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setGenre(undefined);
+    setPlatform(undefined);
     setSearch(inputRef.current?.value || "");
     navigate("/");
   };
