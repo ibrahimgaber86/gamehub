@@ -11,11 +11,11 @@ const ScrollUpBTN = () => {
       variant='filled'
       color='primary'
       radius={"xl"}
-      size={"lg"}
+      size={"xl"}
       sx={{
-        display: `${position.y > 200 ? "flex" : "flex"}`,
+        transform: `translatey(${position.y < 200 ? "5rem" : "0px"})`,
         position: "fixed",
-        bottom: `${position.y > 200 ? "1rem" : "-3rem"}`,
+        bottom: "1rem",
         right: "min(2rem , 10vw)",
         transition: "all 300ms",
       }}

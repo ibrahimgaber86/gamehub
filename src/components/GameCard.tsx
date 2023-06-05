@@ -66,12 +66,26 @@ const GameCard = ({ game }: GameCardProps) => {
             order={1}
             p='sm'
             color='white'
-            bg={theme.fn.rgba("dark", 0.5)}
+            bg={theme.fn.linearGradient(
+              180,
+              theme.fn.rgba("dark", 0.8),
+
+              theme.fn.rgba("dark", 0)
+            )}
             sx={{
               position: "absolute",
               width: "100%",
               top: "-50%",
               transition: "all 400ms",
+              [theme.fn.smallerThan("sm")]: {
+                top: 0,
+                background: theme.fn.linearGradient(
+                  180,
+                  theme.fn.rgba("dark", 0.5),
+                  theme.fn.rgba("dark", 0)
+                ),
+                height: "100%",
+              },
             }}
           >
             {game.name}
